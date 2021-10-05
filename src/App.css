@@ -30,10 +30,12 @@ a {
 a:hover {
   color: #A9A9A9;
 }
-
-container {
-  margin: 1rem 5rem 1rem 2rem;
+.test {
+  display: flex;
+  flex-wrap: wrap;
 }
+
+
 
 .movie_buttons {
   border: transparent;
@@ -47,9 +49,10 @@ container {
 
 .movies__box {
   background: #fff;
+  width: 19rem;
+  margin-right: 0%;
   padding-bottom: 1rem;
   border-radius: 5px;
-
   box-shadow: -1px 2px 34px -13px rgba(0,0,0,0.75);
   text-align: left;
   overflow: hidden;

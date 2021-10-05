@@ -9,6 +9,7 @@ const API_KEY = process.env.REACT_APP_API_KEY;
 
 function App() {
     const [movies, setMovies] =useState([]);
+    const [genre, setGenre] = useState([]);
 
     const getMovie = async (e) => {
         const movieTitle = e.target.elements.movieTitle.value;
@@ -21,6 +22,7 @@ function App() {
         await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc`)
             .then(response => response.json())
             .then(recivedData => setMovies(recivedData.results));
+        console.log(movies);
     }
     useEffect( () => {
         getHomePage();
