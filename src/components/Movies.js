@@ -17,9 +17,6 @@ const Movies = ({movies, popularList}) => {
         <div className="container">
             <div className="row">
                 {popularList.map((movie) => {
-                    //TODO: i need to get the genre_ids so i can public its genre.
-                    //TODO: change the name om det css.
-                    //TODO: check not null before search
                     return (
                         <div key={movie.id} className="col-md-4" style={{marginBottom: "2rem"}}>
                             <div className="movies__box">
