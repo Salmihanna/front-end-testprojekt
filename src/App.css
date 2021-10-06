@@ -35,8 +35,6 @@ a:hover {
   flex-wrap: wrap;
 }
 
-
-
 .movie_buttons {
   border: transparent;
   background: transparent;
@@ -62,14 +60,14 @@ a:hover {
   margin-left: 15px;
 }
 
-.recipes__subtitle {
+.movies__subtitle {
   text-transform: uppercase;
   font-weight: 600;
   font-size: 0.8rem;
   letter-spacing: 2px;
 }
 
-.recipes__subtitle span {
+.movies__subtitle span {
   text-transform: none;
   font-weight: 400;
   font-size: 0.8rem;
@@ -87,7 +85,7 @@ a:hover {
 }
 
 .form__button {
-  border: solid 2px #e74c3c;
+  border: solid 2px #F5DE50;
   background: transparent;
   padding: 0.2rem 0.9rem;
   margin: 0 0.2rem;
@@ -95,57 +93,46 @@ a:hover {
   font-size: 1rem;
   text-transform: uppercase;
   font-weight: 500;
-  margin-left: 0.7rem;
+
 }
 
-input[type="text"] {
-  outline: none;
-}
-
-input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 30px #f3f3f3 inset;
-  -webkit-text-fill-color: #2c3e50 !important;
-}
-
-/******** RECIPE.js ********/
-
-.active-recipe {
+.show-movie {
   margin: 0 auto;
   width: 30%;
 }
 
-.active-recipe__img {
+.show-movie__img {
   height: auto !important;
 }
 
-.active-recipe__title {
+.show-movie__title {
   text-transform: uppercase;
   letter-spacing: 2px;
   margin: 1rem 0;
 }
 
-.active-recipe__publisher, .active-recipe__website {
+.show-movie__subtitle {
   text-transform: uppercase;
   font-size: 1.2rem;
   margin-bottom: 1rem;
 }
 
-.active-recipe__publisher span {
+.show-movie__subtitle span {
   text-transform: none;
   font-weight: 300;
   letter-spacing: 2px;
   margin-left: 5px;
 }
 
-.active-movie__description span {
+.show-movie__description span {
   text-transform: none;
   font-weight: 300;
   letter-spacing: 2px;
   margin-left: 10px;
 }
 
-.active-recipe__button {
-  border: solid 2px #e74c3c;
+.show-movie__button {
+  border: solid 2px #F5DE50;
   background: transparent;
   padding: 0.2rem 0.9rem;
   margin: 0 0.2rem;

@@ -6,26 +6,60 @@ import Movies from './components/Movies';
 import Home from './components/Home';
 
 const API_KEY = process.env.REACT_APP_API_KEY;
+const API_MOVIE = `https://api.themoviedb.org/3/movie/`;
+const API_KEY_PARAM = `api_key=${API_KEY}`;
+const API_SEARCH = `https://api.themoviedb.org/3/search/movie`;
+const API_DISCOVER = `https://api.themoviedb.org/3/discover/movie`;
 
-function App() {
-    const [movies, setMovies] =useState([]);
-    const [genre, setGenre] = useState([]);
+const App = () => {
+    const [movies, setMovies] = useState([]);
+    const [popularListMovies, setPopularListMovies] = useState([]);
 
-    const getMovie = async (e) => {
-        const movieTitle = e.target.elements.movieTitle.value;
-        e.preventDefault();
-        await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${movieTitle}`)
-            .then(response => response.json())
-            .then(recivedData => setMovies(recivedData.results));
+    const getMovieList = async (movieTitle) => {
+        const res = await fetch(`${API_SEARCH}?${API_KEY_PARAM}&query=${movieTitle}`);
+        const data = await res.json();
+
+        return data.results;
     }
-    const getHomePage = async () => {
-        await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc`)
-            .then(response => response.json())
-            .then(recivedData => setMovies(recivedData.results));
-        console.log(movies);
+    const getPopularList = async () => {
+        const res = await fetch(`${API_DISCOVER}?${API_KEY_PARAM}&sort_by=popularity.desc`);
+        const data = await res.json();
+
+        return data.results;
     }
+    const getMovieById = async (id) => {
+        const res = await fetch(`${API_MOVIE}${id}?${API_KEY_PARAM}`);
+        const data = await res.json();
+
+        return data;
+    }
+
+    const getMovies = async (movieTitle) => {
+        let res = [];
+
+        if (typeof movieTitle === "string" && movieTitle !== "") {
+            res = await getMovieList(movieTitle);
+        } else {
+            res = await getPopularList();
+        }
+
+        const movieIds = res.map((movie) => {
+            return movie.id;
+        });
+        const data = await Promise.all(movieIds.map((id) => {
+            return getMovieById(id);
+        }));
+
+        setPopularListMovies(res);
+        setMovies(data);
+        return [res, data];
+    }
+
     useEffect( () => {
-        getHomePage();
+        const fetchPopularList = async () => {
+            await getMovies();
+        }
+        void fetchPopularList();
     }, []);
 
     return (
@@ -33,8 +67,8 @@ function App() {
           <header className="App-header">
             <h1 className="App-title">Top movies</h1>
           </header>
-            <Form getMovie = {getMovie}/>
-            <Movies movies = {movies}/>
+            <Form onClickSearch={getMovies}/>
+            <Movies popularList = {popularListMovies} movies={movies}/>
         </div>
     );
 }
