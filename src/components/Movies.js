@@ -21,7 +21,6 @@ const Movies = ({movies, popularList}) => {
                         <div key={movie.id} className="col-md-4" style={{marginBottom: "2rem"}}>
                             <div className="movies__box">
                                 <img
-                                    className="recepi__box-img"
                                     src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                                     alt={movie.title}
                                 />
