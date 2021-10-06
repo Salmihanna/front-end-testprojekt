@@ -65,7 +65,7 @@ const App = () => {
     return (
         <div className="App">
           <header className="App-header">
-            <h1 className="App-title">Top movies</h1>
+            <h1 className="App-title">Search</h1>
           </header>
             <Form onClickSearch={getMovies}/>
             <Movies popularList = {popularListMovies} movies={movies}/>
