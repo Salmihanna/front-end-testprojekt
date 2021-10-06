@@ -3,7 +3,6 @@ import './App.css';
 
 import Form from './components/Form';
 import Movies from './components/Movies';
-import Home from './components/Home';
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 const API_MOVIE = `https://api.themoviedb.org/3/movie/`;
